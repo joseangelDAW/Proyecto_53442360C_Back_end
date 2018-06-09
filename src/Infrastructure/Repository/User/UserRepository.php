@@ -10,6 +10,25 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
     /**
+     * @return mixed|void
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function insertDefaultAdmin()
+    {
+        $user = new User();
+        $user->setName("Administrador");
+        $user->setSurname("Administrador");
+        $user->setBirthDate(new \DateTime("now"));
+        $user->setNickname("admin");
+        $user->setEmail("admin@admin.com");
+        $user->setPassword(password_hash("admin", PASSWORD_DEFAULT));
+        $user->setRole("admin");
+
+        $this->persistAndFlush($user);
+    }
+
+    /**
      * @param string $name
      * @param string $surname
      * @param \DateTime $birthDate

@@ -11,6 +11,11 @@ namespace App\Domain\Model\Entity\User;
 interface UserRepositoryInterface
 {
     /**
+     * @return mixed
+     */
+    public function insertDefaultAdmin();
+
+    /**
      * @param string $name
      * @param string $surname
      * @param \DateTime $birthDate

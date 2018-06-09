@@ -2,6 +2,10 @@ success:
     path: /success/{name}/{fecha_nacimiento}
     controller: App\Infrastructure\Controller\UserController::success
 
+insertDefaultAdmin:
+    path: /insertDefaultAdmin
+    controller: App\Infrastructure\Controller\UserController::insertDefaultAdmin
+
 insertUser:
     path: /insertUser
     controller: App\Infrastructure\Controller\UserController::insertUser

@@ -28,6 +28,19 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     /**
+     * @param UserRepositoryInterface $userRepository
+     * @return JsonResponse
+     */
+    public function insertDefaultAdmin(
+        UserRepositoryInterface $userRepository
+    )
+    {
+        $userRepository->insertDefaultAdmin();
+        return new JsonResponse("Admin insertado");
+    }
+
+
+    /**
      * @param Request $request
      * @param InsertUser $insertUser
      * @param ReactRequestTransform $reactRequestTransform
