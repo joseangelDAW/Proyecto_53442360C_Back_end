@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+user:
+    resource: 'routes/UserRoutes/user_routes.yaml'
+    prefix: /user
+
+address:
+    resource: 'routes/AddressRoutes/address_routes.yaml'
+    prefix: /address
+
+pet:
+    resource: 'routes/PetRoutes/pet_routes.yaml'
+    prefix: /pet
+
+news:
+    resource: 'routes/NewsRoutes/news_routes.yaml'
+    prefix: /news

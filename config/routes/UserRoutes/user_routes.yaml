@@ -1,0 +1,35 @@
+success:
+    path: /success/{name}/{fecha_nacimiento}
+    controller: App\Infrastructure\Controller\UserController::success
+
+insertUser:
+    path: /insertUser
+    controller: App\Infrastructure\Controller\UserController::insertUser
+    methods: [POST]
+
+loginUser:
+    path: /loginUser
+    controller: App\Infrastructure\Controller\UserController::loginUser
+    methods: [POST]
+
+listUser:
+    path: /listUser
+    controller: App\Infrastructure\Controller\UserController::listUser
+
+updateUser:
+    path: /updateUser
+    controller: App\Infrastructure\Controller\UserController::updateUser
+    methods: [POST]
+
+listUserByKey:
+    path: /listUserByKey/{key}/{value}
+    controller: App\Infrastructure\Controller\UserController::listUserByKey
+
+listPetsById:
+    path: /listPetsById/{id}
+    controller: App\Infrastructure\Controller\UserController::listPetsById
+
+sendEmailWhenRegistered:
+    path: /sendEmailWhenRegistered
+    controller: App\Infrastructure\Controller\UserController::sendEmailWhenRegistered
+    methods: [POST]

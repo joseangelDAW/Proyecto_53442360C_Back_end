@@ -1,0 +1,21 @@
+insertAddress:
+    path: /insertAddress
+    controller: App\Infrastructure\Controller\AddressController::insertAddress
+    methods: [POST]
+
+listAddress:
+    path: /listAddress
+    controller: App\Infrastructure\Controller\AddressController::listAddress
+
+listAddressByKey:
+    path: /listAddressByKey/{key}/{value}
+    controller: App\Infrastructure\Controller\AddressController::listAddressByKey
+
+updateAddress:
+    path: /updateAddress
+    controller: App\Infrastructure\Controller\AddressController::updateAddress
+    methods: [POST]
+
+listAddressByUserId:
+    path: /listAddressByUserId/{id}
+    controller: App\Infrastructure\Controller\AddressController::listAddressByUserId

@@ -1,0 +1,36 @@
+insertPet:
+    path: /insertPet
+    controller: App\Infrastructure\Controller\PetController::insertPet
+    methods: [POST]
+
+updatePet:
+    path: /updatePet
+    controller: App\Infrastructure\Controller\PetController::updatePet
+    methods: [POST]
+
+listPetByKey:
+    path: /listPetByKey/{key}/{value}
+    controller: App\Infrastructure\Controller\PetController::listPetByKey
+
+listPet:
+    path: /listPet
+    controller: App\Infrastructure\Controller\PetController::listPet
+
+uploadPetImage:
+    path: /uploadPetImage/{id}
+    controller: App\Infrastructure\Controller\PetController::uploadPetImage
+    methods: [POST]
+
+listPetByUserId:
+    path: /listPetByUserId/{id}
+    controller: App\Infrastructure\Controller\PetController::listPetByUserId
+
+listMatchedPet:
+    path: /listMatchedPet/{typePet}/{sex}/{race}/{userId}
+    controller: App\Infrastructure\Controller\PetController::listMatchedPet
+
+sendEmailMatchedPet:
+    path: /sendEmailMatchedPet
+    controller: App\Infrastructure\Controller\PetController::sendEmailMatchedPet
+    methods: [POST]
+
