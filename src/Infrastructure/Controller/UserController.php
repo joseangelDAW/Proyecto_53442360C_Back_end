@@ -16,6 +16,7 @@ use App\Application\User\ListUserByKey\ListUserByKey;
 use App\Application\User\ListUserByKey\ListUserByKeyCommand;
 use App\Application\User\LoginUser\LoginUser;
 use App\Application\User\LoginUser\LoginUserCommand;
+use App\Application\User\SendEmailWhenRegistered\SendEmailWhenRegistered;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
@@ -157,60 +158,24 @@ class UserController extends Controller
         ]);
     }
 
-
-    /**
-     * @param $id
-     * @param Request $request
-     * @param UserRepositoryInterface $userRepository
-     * @return JsonResponse
-     */
-    public function listPetsById(
-        $id,
-        Request $request,
-        UserRepositoryInterface $userRepository
-    ) {
-        $output = $userRepository->getPetsById($id);
-        return $this->json([$output]);
-    }
-
     /**
      * @param Request $request
+     * @param SendEmailWhenRegistered $sendEmailWhenRegistered
      * @param ReactRequestTransform $reactRequestTransform
-     * @param \Swift_Mailer $mailer
-     * @param UserRepositoryInterface $userRepository
      * @return JsonResponse
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function sendEmailWhenRegistered(
         Request $request,
-        ReactRequestTransform $reactRequestTransform,
-        \Swift_Mailer $mailer,
-        UserRepositoryInterface $userRepository
+        SendEmailWhenRegistered $sendEmailWhenRegistered,
+        ReactRequestTransform $reactRequestTransform
     ) {
         $item = $reactRequestTransform->transform($request);
-
         $userId = $item['userId'];
-
-        $user = $userRepository->findUserById($userId);
-        $name = $user->getName();
-        $receiverEmail = $user->getEmail();
-
-        $message = (new \Swift_Message('Confirmacion registro en Web de mascotas'))
-            ->setFrom('noreply@mascotas.com')
-            ->setTo($receiverEmail)
-            ->setBody(
-                $this->renderView(
-                    'user/emailUserRegistered.twig',
-                    [
-                        'name' => $name
-                    ]
-                ),
-                'text/html'
-            )
-        ;
-
-        $mailer->send($message);
+        $sendEmailWhenRegistered->handle($userId);
 
         return new JsonResponse(["Email enviado con éxito"]);
     }
-
 }
