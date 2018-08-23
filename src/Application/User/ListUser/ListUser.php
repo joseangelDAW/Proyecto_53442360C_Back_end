@@ -21,6 +21,7 @@ class ListUser
         UserRepositoryInterface $userRepository
     )
     {
+
         $this->listUserTransform = $listUserTransform;
         $this->userRepository = $userRepository;
     }

@@ -20,14 +20,18 @@ use App\Application\User\SendEmailWhenRegistered\SendEmailWhenRegistered;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
+use App\Infrastructure\Events\SomethingHappenedEvent;
+use App\Infrastructure\PruebasMias\FooTrait;
 use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
+//    use FooTrait;
     /**
      * @param UserRepositoryInterface $userRepository
      * @return JsonResponse

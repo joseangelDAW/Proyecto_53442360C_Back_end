@@ -17,3 +17,11 @@ pet:
 news:
     resource: 'routes/NewsRoutes/news_routes.yaml'
     prefix: /news
+
+addListeners:
+    path: /addListeners
+    controller: App\Infrastructure\Controller\PruebasMiasController::addListeners
+
+dispatchEvent:
+    path: /dispatchEvent
+    controller: App\Infrastructure\Controller\PruebasMiasController::dispatchEvent
